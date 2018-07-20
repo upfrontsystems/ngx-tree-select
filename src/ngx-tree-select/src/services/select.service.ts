@@ -165,7 +165,7 @@ export class SelectService {
       let i = 1;
       return sources.map((srcItem) => {
         let item: SelectableItem;
-        if (srcItem[this._options.idProperty] &&
+        if (srcItem[this._options.idProperty] !== undefined &&
             srcItem[this._options.idProperty] !== '' &&
             srcItem[this._options.textProperty]) {
           item = new SelectableItem(
