@@ -1,8 +1,10 @@
 import {
   Component,
+  EventEmitter,
   forwardRef,
   HostListener,
   Input,
+  Output,
   OnInit
   } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -101,6 +103,12 @@ export class TreeSelectComponent implements ControlValueAccessor {
   }
   public get maxVisibleItemCount(): number {
     return this.svc.Configuration.maxVisibleItemCount;
+  }
+
+  @Output()
+  itemExpanded: EventEmitter<any> = new EventEmitter();
+  onExpand(event) {
+    this.itemExpanded.emit(event)
   }
 
   public get internalItems(): SelectableItem[] {

@@ -161,7 +161,7 @@ export class SelectService {
   }
 
   private toSelectableItems(sources: any[]): SelectableItem[] {
-    if (sources && Array.isArray(sources)) {
+    if (sources) {
       let i = 1;
       return sources.map((srcItem) => {
         let item: SelectableItem;
