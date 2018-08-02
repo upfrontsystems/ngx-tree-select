@@ -29,6 +29,17 @@ export class SelectService {
     this.setConfiguration((opt) => opt.isOpen = !opt.isOpen, false);
   }
 
+  // tree has been expanded
+  public expanded(): void {
+    if (this._options.loadChildrenCallable){
+      this._options.loadChildrenCallable(this._options.model.id).subscribe(
+        data => {
+            this.setItems(data);
+        },
+        error => { });
+    }
+  }
+
   /*
     Call when list of items is set.
   */

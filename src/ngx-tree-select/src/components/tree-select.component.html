@@ -26,8 +26,7 @@
     <input name="filterText" *ngIf="allowFilter" type="text" [(ngModel)]="filter" (click)="setInputFocus()" (blur)="setInputFocusOut()"
       class="form-control" placeholder="{{filterPlaceholder}}" [ngModelOptions]="{standalone: true}" autocomplete="off" />
     <li *ngFor="let o of internalItems | itemPipe:filter" role="menuitem">
-      <tree-select-item [item]="o" [onTouchedCallBack]="onTouchedCallback"
-        (onExpand)="onExpand($event)"></tree-select-item>
+      <tree-select-item [item]="o" [onTouchedCallBack]="onTouchedCallback"></tree-select-item>
     </li>
   </ul>
 </div>

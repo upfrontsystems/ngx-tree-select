@@ -22,9 +22,6 @@ export class TreeSelectItemComponent {
   @Input()
   public item: SelectableItem;
 
-  @Output()
-  onExpand: EventEmitter<SelectableItem> = new EventEmitter();
-
   public constructor(
     private svc: SelectService
   ) { }
@@ -33,8 +30,9 @@ export class TreeSelectItemComponent {
     $event.stopPropagation();
     if (this.haveChildren) {
       this.item.isOpen = !this.item.isOpen;
+      // tree has been expanded, load children
       if (this.item.isOpen){
-        this.onExpand.emit(this.item)
+        this.svc.expanded();
       }
     } else {
       this.select($event);

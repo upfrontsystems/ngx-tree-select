@@ -105,10 +105,12 @@ export class TreeSelectComponent implements ControlValueAccessor {
     return this.svc.Configuration.maxVisibleItemCount;
   }
 
-  @Output()
-  itemExpanded: EventEmitter<any> = new EventEmitter();
-  onExpand(event) {
-    this.itemExpanded.emit(event)
+  @Input()
+  public set loadChildrenCallable(callable) {
+    this.svc.setConfiguration((opt) => opt.loadChildrenCallable = callable, null);
+  }
+  public get loadChildrenCallable(): number {
+    return this.svc.Configuration.loadChildrenCallable;
   }
 
   public get internalItems(): SelectableItem[] {
