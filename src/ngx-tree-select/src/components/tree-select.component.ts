@@ -106,11 +106,11 @@ export class TreeSelectComponent implements ControlValueAccessor {
   }
 
   @Input()
-  public set loadChildrenCallable(callable) {
-    this.svc.setConfiguration((opt) => opt.loadChildrenCallable = callable, null);
+  public set childrenCallableField(value) {
+    this.svc.setConfiguration((opt) => opt.childrenCallableProperty = value, null);
   }
-  public get loadChildrenCallable(): number {
-    return this.svc.Configuration.loadChildrenCallable;
+  public get childrenCallableField(): number {
+    return this.svc.Configuration.childrenCallableProperty;
   }
 
   public get internalItems(): SelectableItem[] {

@@ -30,13 +30,22 @@ export class SelectService {
   }
 
   // tree has been expanded
-  public expanded(): void {
-    if (this._options.loadChildrenCallable){
-      this._options.loadChildrenCallable(this._options.model.id).subscribe(
-        data => {
-            this.setItems(data);
-        },
-        error => { });
+  public expanded(item): void {
+    if (this._options.childrenCallableProperty){
+      // find item in list of items
+      for (let ix = 0; ix < this.Configuration.items.length; ix++){
+        let citem = this.Configuration.items[ix];
+        if (item.data[this._options.idProperty]  == citem[this._options.idProperty] ){
+          // get children from callable
+          item.data[this._options.childrenCallableProperty]().subscribe(
+            data => {
+              // set items
+              this.Configuration.items[ix][this._options.childProperty] = data;
+              this.setItems(this.Configuration.items);
+            },
+            error => { });
+        }
+      }
     }
   }
 

@@ -32,7 +32,7 @@ export class TreeSelectItemComponent {
       this.item.isOpen = !this.item.isOpen;
       // tree has been expanded, load children
       if (this.item.isOpen){
-        this.svc.expanded();
+        this.svc.expanded(this.item);
       }
     } else {
       this.select($event);
