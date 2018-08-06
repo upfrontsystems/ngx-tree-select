@@ -8,7 +8,7 @@ export const HierarchicalCountries = [
         name: 'Angola',
         capital: 'Luanda',
         phone: '244',
-        currency: 'AOA',
+        currency: 'AOA'
       },
       {
         id: 'BF',
@@ -393,7 +393,19 @@ export const HierarchicalCountries = [
         name: 'South Africa',
         capital: 'Pretoria',
         phone: '27',
-        currency: 'ZAR'
+        currency: 'ZAR',
+        children: [
+          {
+            id: 'WC',
+            name: 'Western Cape',
+            capital: 'Cape Town',
+          },
+          {
+            id: 'EC',
+            name: 'Eastern Cape',
+            capital: 'Port Elizabeth'
+          }
+        ]
       },
       {
         id: 'ZM',

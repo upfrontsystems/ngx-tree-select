@@ -38,4 +38,8 @@ export class HierarchicalComponent {
       currency: 'EUR'
     }
   ];
+
+  public itemExpanded(event, svc) {
+    console.log(event);
+  }
 }

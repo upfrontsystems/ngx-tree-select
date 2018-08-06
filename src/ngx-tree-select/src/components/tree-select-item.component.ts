@@ -22,17 +22,21 @@ export class TreeSelectItemComponent {
   @Input()
   public item: SelectableItem;
 
+  @Output()
+  public onExpand = new EventEmitter();
+
   public constructor(
     private svc: SelectService
   ) { }
 
   public toggleOpen($event: any) {
     $event.stopPropagation();
+    console.log('tree select item onExpand');
     if (this.haveChildren) {
       this.item.isOpen = !this.item.isOpen;
-      // tree has been expanded, load children
-      if (this.item.isOpen){
-        this.svc.expanded(this.item);
+      if (this.item.isOpen) {
+        console.log('tree select item opened');
+        this.onExpand.emit(this.item);
       }
     } else {
       this.select($event);

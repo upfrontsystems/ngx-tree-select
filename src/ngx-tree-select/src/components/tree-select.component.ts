@@ -4,8 +4,8 @@ import {
   forwardRef,
   HostListener,
   Input,
-  Output,
-  OnInit
+  OnInit,
+  Output
   } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ItemPipe } from '../pipes/item.pipe';
@@ -105,12 +105,11 @@ export class TreeSelectComponent implements ControlValueAccessor {
     return this.svc.Configuration.maxVisibleItemCount;
   }
 
-  @Input()
-  public set childrenCallableField(value) {
-    this.svc.setConfiguration((opt) => opt.childrenCallableProperty = value, null);
-  }
-  public get childrenCallableField(): number {
-    return this.svc.Configuration.childrenCallableProperty;
+  @Output()
+  public itemExpanded = new EventEmitter();
+  public onExpand(event) {
+    console.log('tree select onExpand');
+    this.itemExpanded.emit(event);
   }
 
   public get internalItems(): SelectableItem[] {
