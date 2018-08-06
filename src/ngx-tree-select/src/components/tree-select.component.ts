@@ -108,8 +108,7 @@ export class TreeSelectComponent implements ControlValueAccessor {
   @Output()
   public itemExpanded = new EventEmitter();
   public onExpand(event) {
-    console.log('tree select onExpand');
-    this.itemExpanded.emit(event);
+    this.itemExpanded.emit([event, this.svc]);
   }
 
   public get internalItems(): SelectableItem[] {

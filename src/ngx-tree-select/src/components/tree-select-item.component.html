@@ -14,7 +14,7 @@
   </div>
   <ul *ngIf="haveChildren && isOpen" class="ui-select-choices" role="menu">
     <li *ngFor="let o of item.children | itemPipe:filter" role="menuitem">
-      <tree-select-item [item]="o" [onTouchedCallBack]="onTouchedCallBack"></tree-select-item>
+      <tree-select-item [item]="o" (onExpand)="itemExpanded($event)" [onTouchedCallBack]="onTouchedCallBack"></tree-select-item>
     </li>
   </ul>
 </div>

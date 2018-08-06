@@ -39,7 +39,7 @@ export class HierarchicalComponent {
     }
   ];
 
-  public itemExpanded(event, svc) {
+  public itemExpanded(event) {
     console.log(event);
   }
 }
